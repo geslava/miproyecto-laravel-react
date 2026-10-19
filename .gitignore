@@ -1,0 +1,5 @@
+miproyecto/.env
+miproyecto/vendor/
+frontend/node_modules/
+frontend/dist/
+miproyecto/compose.yaml.backup
