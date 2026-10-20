@@ -1,121 +1,140 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+
+import { useEffect, useState } from 'react'
 import './App.css'
 
+const API = 'http://localhost:8000/api'
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [portafolio, setPortafolio] = useState(null)
+  const [proyectos, setProyectos] = useState([])
+  const [error, setError] = useState('')
+  const [cargando, setCargando] = useState(true)
+
+  useEffect(() => {
+    async function cargarDatos() {
+      try {
+        const [respuestaPortafolio, respuestaProyectos] =
+          await Promise.all([
+            fetch(`${API}/portafolio`),
+            fetch(`${API}/proyectos`),
+          ])
+
+        if (!respuestaPortafolio.ok || !respuestaProyectos.ok) {
+          throw new Error('No fue posible obtener los datos de Laravel.')
+        }
+
+        const datosPortafolio = await respuestaPortafolio.json()
+        const datosProyectos = await respuestaProyectos.json()
+
+        setPortafolio(datosPortafolio)
+        setProyectos(Array.isArray(datosProyectos) ? datosProyectos : [])
+      } catch (err) {
+        setError(
+          'No se pudieron cargar los datos. Verifica que Laravel esté activo.'
+        )
+        console.error('Error al consultar la API:', err)
+      } finally {
+        setCargando(false)
+      }
+    }
+
+    cargarDatos()
+  }, [])
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+    <div className="app">
+      <header className="encabezado">
+        <a className="marca" href="#inicio">Mi Portafolio</a>
+        <nav>
+          <a href="#sobre-mi">Acerca de</a>
+          <a href="#tecnologias">Tecnologías</a>
+          <a href="#proyectos">Proyectos</a>
+        </nav>
+      </header>
+
+      <main>
+        <section className="portada" id="inicio">
+          <div className="portada-contenido">
+            <p className="etiqueta">DESARROLLO DE SOFTWARE</p>
+            <h1>
+              Ideas que se convierten en
+              <span> soluciones digitales.</span>
+            </h1>
+            <p className="descripcion">
+              {portafolio?.descripcion ||
+                'Explora mis proyectos y las tecnologías que utilizo.'}
+            </p>
+            <a className="boton" href="#proyectos">
+              Explorar proyectos ↓
+            </a>
+          </div>
+          <div className="portada-grafico" aria-hidden="true">
+            <span>{'{ }'}</span>
+            <span className="punto punto-uno"></span>
+            <span className="punto punto-dos"></span>
+          </div>
+        </section>
+
+        <section className="seccion" id="sobre-mi">
+          <p className="etiqueta">ACERCA DEL PORTAFOLIO</p>
+          <h2>{portafolio?.titulo || 'Mi portafolio de proyectos'}</h2>
+          <p className="texto-seccion">
+            Un espacio para presentar aplicaciones, soluciones web y proyectos
+            de software desarrollados con distintas herramientas tecnológicas.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+        </section>
 
-      <div className="ticks"></div>
+        <section className="seccion tecnologias" id="tecnologias">
+          <p className="etiqueta">HERRAMIENTAS</p>
+          <h2>Tecnologías</h2>
+          <div className="lista-tecnologias">
+            {(portafolio?.tecnologias || [
+              'Laravel', 'React', 'PHP', 'JavaScript', 'MariaDB',
+            ]).map((tecnologia) => (
+              <span className="tecnologia" key={tecnologia}>
+                {tecnologia}
+              </span>
+            ))}
+          </div>
+        </section>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <section className="seccion" id="proyectos">
+          <p className="etiqueta">TRABAJO REALIZADO</p>
+          <h2>Proyectos</h2>
+          <p className="texto-seccion">
+            Información obtenida directamente desde la API de Laravel.
+          </p>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+          {cargando && <p className="estado">Cargando proyectos...</p>}
+
+          {error && <p className="error">{error}</p>}
+
+          {!cargando && !error && proyectos.length === 0 && (
+            <p className="estado">Todavía no hay proyectos registrados.</p>
+          )}
+
+          <div className="rejilla-proyectos">
+            {proyectos.map((proyecto) => (
+              <article className="tarjeta" key={proyecto.id}>
+                <div className="tarjeta-numero">
+                  PROYECTO {String(proyecto.id).padStart(2, '0')}
+                </div>
+                <h3>{proyecto.nombre}</h3>
+                <p>{proyecto.descripcion}</p>
+                {proyecto.estado && (
+                  <span className="estado-proyecto">{proyecto.estado}</span>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>{portafolio?.titulo || 'Mi Portafolio'}</p>
+        <p>Desarrollado con React y Laravel</p>
+      </footer>
+    </div>
   )
 }
 
