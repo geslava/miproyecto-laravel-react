@@ -1,0 +1,314 @@
+/* =========================================================
+   ESTILOS DEL PORTAL BRAILLE-MAC
+   Bootstrap 5.3 + estilos propios
+========================================================= */
+
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.main-content {
+  background: #f4f8fb;
+  padding: 35px;
+  min-height: calc(100vh - 175px);
+}
+
+.main-content section {
+  background: white;
+  padding: 35px;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 12px rgba(0,0,0,.15);
+}
+
+.main-content section h2 {
+  color: #1565c0;
+  margin-bottom: 20px;
+}
+
+.main-content section p {
+  line-height: 1.8;
+  font-size: 18px;
+  text-align: justify;
+}
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+
+.cards {
+  margin-top: 25px;
+}
+
+.card {
+  background: #1976d2;
+  color: white;
+  padding: 25px;
+  border: 0;
+  border-radius: 15px;
+  transition: .4s;
+}
+
+.card h3 {
+  font-size: 1.35rem;
+}
+
+.card p {
+  font-size: 1rem !important;
+  text-align: left !important;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  background: #0d47a1;
+}
+
+/* =========================================================
+   MENÚ LATERAL MÓVIL
+========================================================= */
+
+.mobile-sidebar-button {
+  padding: 15px;
+  background: #f4f8fb;
+}
+
+.offcanvas .sidebar {
+  border-right: 0;
+  box-shadow: none;
+}
+
+.offcanvas-header {
+  background: #f4f8fb;
+}
+
+.offcanvas-title {
+  color: #0d47a1;
+  font-size: 1.35rem;
+}
+
+/* =========================================================
+   TABLA BRAILLE
+========================================================= */
+
+.tabla-braille {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabla-braille th {
+  background: #1565c0;
+  color: white;
+  padding: 15px;
+  text-align: left;
+}
+
+.tabla-braille td {
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  line-height: 1.7;
+}
+
+.tabla-braille tr:hover {
+  background: #f3f8ff;
+}
+
+/* =========================================================
+   PIE DE PÁGINA
+========================================================= */
+
+.footer {
+  background: #1e3a8a;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px 15px 0 0;
+}
+
+.footer-contenido {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.footer p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #e8eef5;
+  margin: 0;
+}
+
+.footer strong {
+  color: #ffd54f;
+}
+
+/* =========================================================
+   TABLETS
+========================================================= */
+
+@media (max-width: 1199.98px) {
+  .main-nav .nav-link {
+    font-size: 14px;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+  }
+
+  .main-content {
+    padding: 25px;
+  }
+
+  .main-content section {
+    padding: 28px;
+  }
+}
+
+/* =========================================================
+   MÓVILES
+========================================================= */
+
+@media (max-width: 991.98px) {
+
+  .site-header {
+    height: auto;
+    min-height: 115px;
+    padding: 10px 0;
+  }
+
+  .site-header .container-fluid,
+  .site-header .row {
+    min-height: 0;
+  }
+
+  .logo-sitio img {
+    width: 60px;
+  }
+
+  .header-text {
+    padding-left: 5px;
+  }
+
+  .membrete img {
+    width: 110px;
+    max-height: 75px;
+  }
+
+  .subtitulo {
+    line-height: 1.25;
+  }
+
+  .main-nav {
+    min-height: 52px;
+  }
+
+  .main-nav .navbar-collapse {
+    background: #0b3954;
+    margin: 0 -12px;
+    padding: 8px 12px 12px;
+  }
+
+  .main-nav .navbar-nav {
+    gap: 2px;
+  }
+
+  .main-nav .nav-link {
+    padding: 10px !important;
+  }
+
+  .main-content {
+    min-height: auto;
+    padding: 15px;
+  }
+
+  .main-content section {
+    padding: 22px;
+    margin-bottom: 20px;
+  }
+
+  .main-content section p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
+/* =========================================================
+   MÓVILES PEQUEÑOS
+========================================================= */
+
+@media (max-width: 575.98px) {
+
+  .site-header {
+    min-height: 105px;
+  }
+
+  .logo-sitio {
+    padding-left: 10px;
+  }
+
+  .logo-sitio img {
+    width: 48px;
+  }
+
+  .header-text {
+    padding-left: 5px;
+  }
+
+  .logo {
+    font-size: 1.15rem;
+  }
+
+  .subtitulo {
+    font-size: .72rem;
+  }
+
+  .membrete {
+    padding-right: 8px;
+  }
+
+  .membrete img {
+    width: 75px;
+    max-height: 60px;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .main-content section {
+    padding: 18px;
+    border-radius: 10px;
+  }
+
+  .main-content section h2 {
+    font-size: 1.35rem;
+  }
+
+  .main-content section p {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .footer {
+    border-radius: 10px 10px 0 0;
+    padding: 15px 10px;
+  }
+
+  .footer p {
+    font-size: 13px;
+  }
+
+  /* Tablas con desplazamiento horizontal */
+  .tabla-braille {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

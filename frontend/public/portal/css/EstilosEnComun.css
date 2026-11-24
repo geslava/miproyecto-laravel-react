@@ -1,0 +1,341 @@
+/* =========================================================
+   ESTILOS DEL PORTAL BRAILLE-MAC
+   Bootstrap 5.3 + estilos propios
+========================================================= */
+:root{
+    --azul:#1E3A8A;
+    --azul-claro:#3B82F6;
+    --azul-oscuro:#0B3954;
+    --gris-fondo:#F3F4F6;
+    --texto:#374151;
+    --verde:#10B981;
+    --amarillo:#ffc107;
+}
+
+body{
+    margin:0;
+    padding-top: 175px; /* 120 + 55 */
+    font-family:sans-serif,"Segoe UI",Arial;
+    background:var(--gris-fondo);
+    color:var(--texto);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/****    ENCABEZADO    **** */
+.site-header {
+  height: 120px;
+  background: linear-gradient(90deg, #0d47a1, #1565c0, #42a5f5);
+  color: white;
+  /*position: relative;*/
+  z-index: 1030;
+   
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+}
+.site-header .container-fluid,
+.site-header .row {
+  min-height: 120px;
+}
+
+.logo-sitio {
+  padding-left: 20px;
+}
+
+.logo-sitio img {
+  width: 75px;
+  height: auto;
+  display: block;
+}
+.header-text {
+  padding-left: 15px;
+}
+.logo {
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+  font-weight: bold;
+  line-height: 1.15;
+}
+
+.subtitulo {
+  font-size: clamp(.85rem, 1.5vw, 1.1rem);
+  margin-top: 7px;
+  line-height: 1.3;
+}
+
+.subtitulo small {
+  font-size: .85em;
+}
+
+.membrete {
+  padding-right: 20px;
+}
+
+.membrete img {
+  width: min(400px, 30vw);
+  max-height: 110px;
+  object-fit: contain;
+  display: block;
+}
+
+/****    MENÚ PRINCIPAL    ****/
+
+.main-nav {
+  min-height: 55px;
+  background: #0b3954;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+ /* position: relative;*/
+  z-index: 1020;
+
+  width: 100%;
+  position: fixed;
+  top: 120px; /* empuja el menú debajo del header */
+  left: 0;
+}
+
+.main-nav .navbar-nav {
+  gap: 8px;
+}
+
+.main-nav .nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 10px !important;
+  border-radius: 8px;
+  transition: .3s;
+}
+
+.main-nav .nav-link:hover,
+.main-nav .nav-link:focus,
+.main-nav .nav-link.active {
+  background: #ffc107;
+  color: #000000 !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255,255,255,.5);
+}
+
+
+/****   ESTRUCTURA PRINCIPAL    ****/
+
+.contenido-principal {
+  padding: 0;
+}
+
+.contenido-principal > .row {
+  margin: 0;
+}
+
+.sidebar {
+  background: white;
+  border-right: 3px solid #1976d2;
+  box-shadow: 3px 0 8px rgba(0,0,0,.15);
+}
+
+.sidebar-inner {
+  padding: 25px 20px;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 175px);
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  color: #1565c0;
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ececec;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 8px 0;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  text-decoration: none;
+  color: #37474f;
+  border-radius: 12px;
+  transition: all .3s ease;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.sidebar a:hover {
+  background: #cbe7fb;
+  color: #0d47a1;
+  transform: translateX(5px);
+}
+
+.sidebar a.active {
+  background: #1565c0;
+  color: white;
+  font-weight: bold;
+}
+
+.sidebar i {
+  width: 28px;
+  text-align: center;
+}
+
+/* ================= BOTÓN Manda hasta ARRIBA ================= */
+
+.top-btn{
+    color:rgba(0,0,0,.6);
+    font-size:3rem;
+    display:block;
+    width:4rem;
+    height:4rem;
+    text-align:center;
+    overflow:hidden;
+    position:fixed;
+    bottom:1rem;
+    right:1rem;
+    z-index:1020;
+    text-decoration:none;
+}
+
+.top-btn span:last-child{
+    display:block;
+    font-size:.7rem;
+    margin-top:-12px;
+}
+
+
+@media (max-width:575.98px){
+    html{
+        scroll-padding-top:120px;
+    }
+
+    .logo-principal{
+        width:52px;
+    }
+
+    .site-header .navbar-brand{
+        font-size:1.1rem;
+    }
+
+    .mobile-subtitle{
+        font-size:.78rem;
+    }
+
+    .hero{
+        padding:30px 15px;
+        gap:25px;
+    }
+
+    .hero-text p,
+    .texto-principal{
+        line-height:1.6;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    
+    .seccion h2{
+        margin-left:0;
+    }
+
+    .columna-accesibilidad .imagen-centro img{
+        height:auto;
+        max-height:260px;
+    }
+
+    .campo{
+        display:block;
+    }
+
+    .campo label{
+        display:block;
+        width:auto;
+        margin:1rem 0 .5rem;
+    }
+
+    .campo input,
+    .campo textarea{
+        width:100%;
+        margin:0;
+    }
+
+    .top-btn{
+        right:.5rem;
+        bottom:.5rem;
+        font-size:2.5rem;
+    }
+}
+
+/* ================= CELULAR ================= */
+
+@media (max-width:991.98px){
+    .site-header .navbar{
+        min-height:72px;
+    }
+
+    .site-header .navbar-collapse{
+        background:var(--azul-oscuro);
+        margin:0 -12px;
+        padding:10px 15px 15px;
+    }
+
+    .site-header .navbar-nav{
+        gap:2px;
+    }
+
+     .main-nav .nav-link {
+    padding: 10px !important;
+  }
+}
+
+/* En computadora */
+@media (min-width: 992px) {
+    .navbar {
+        min-height: 55px;
+    }
+
+    .navbar-nav {
+        margin: auto;
+    }
+
+    .navbar-nav .nav-link {
+        color: white !important;
+        padding: 8px 12px;
+        margin: 0 4px;
+        border-radius: 8px;
+    }
+
+    .navbar-nav .nav-link:hover {
+        background-color: #ffc107;
+        color: #000 !important;
+    }
+}
+/* ================= TABLET ================= */
+@media (max-width: 1199.98px) {
+  .main-nav .nav-link {
+    font-size: 14px;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+  }
+}
